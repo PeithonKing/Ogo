@@ -4,7 +4,8 @@ import pywhatkit
 import datetime
 import wikipedia
 import pyjokes
-from Modules import WeatherForcast as wf 
+import Modules.WeatherForcast.WeatherForcast as wf 
+import Modules.alarm.alarm
 
 
 listener = sr.Recognizer()
@@ -67,6 +68,8 @@ def RunOgo():
 				
 	elif 'joke' in command:
 		speak(pyjokes.get_joke())
+		
+	
 		
 	# Work is going on in weather forecast!
 	elif 'weather' in command:

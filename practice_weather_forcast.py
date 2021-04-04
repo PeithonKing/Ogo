@@ -1,7 +1,7 @@
-from Modules import WeatherForcast as wf 
+import Modules.WeatherForcast.WeatherForcast as wf 
 place = "Bhubaneswar"
-weather=wf.forecast(place)
-#print(weather)
+weather = wf.forecast(place)
+print(weather)
 
 '''weather={'date': '2021-02-27',
  'day': {'humidity': None,
@@ -32,7 +32,7 @@ for word in narrative:
 		narrative.remove(word)
 print(narrative)'''
 
-tell = ""
+'''tell = ""
 for key, value in weather['night'].items():
 	if value:
 		if key == "narrative":
@@ -44,15 +44,15 @@ for key, value in weather['night'].items():
 				if word == "":
 					narrative.remove(word)
 print(narrative)			
-'''				if n==0:
+''''''				if n==0:
 					tell += "The sky will remain " + narrative[n]
 				else:
 					tell += "not in " + str(n) + ". "
-'''
+''''''
 tell += "The sky will remain " + narrative[0] + ".\n"
 if " " not in narrative[1]:
 	tell += "Distant visibility will be " + narrative[1] + ".\n"
 else:
 	pass
-print(tell)
+print(tell)'''
 
