@@ -5,7 +5,7 @@ import datetime
 import wikipedia
 import pyjokes
 import Modules.WeatherForcast.WeatherForcast as wf 
-import Modules.alarm.alarm
+# import Modules.alarm.alarm
 
 
 listener = sr.Recognizer()
@@ -56,7 +56,6 @@ def RunOgo():
 		if "wikipedia" in command:
 			command = command.replace('wikipedia', '')
 		info = wikipedia.summary(command.strip(), 1)
-		print(info)
 		speak(info)
 		
 	elif 'date' in command:
@@ -76,11 +75,30 @@ def RunOgo():
 		speak("Please repeat only the name of the place!")
 		place = input()
 		weather = wf.forecast(place)
-		tell = ""
-		for key, value in weather['night'].items():
-			if value:
-				tell+= "bash"
-			else: print("\t\tNo value for " + key)
+		intro = "Weather forcast for " + weather['place'] + " for " + weather['date'] + " is"
+		day = ""
+		if weather['day']['phrases']:
+			day += "\tWeather: " + weather['day']['phrases'] + "\n"
+		if weather['day']['temperature']:
+			day += "\tTemperature: " + str(weather['day']['temperature']) + "\n"
+		if weather['day']['precipitate']:
+			day += "\tPrecipitation: " + str(weather['day']['precipitate']) + "\n"
+		if weather['day']['humidity']:
+			day += "\tHumidity: " + str(weather['day']['humidity']) + "\n"
+
+		night = ""
+		if weather['night']['phrases']:
+			night += "\tWeather: " + weather['night']['phrases'] + "\n"
+		if weather['night']['temperature']:
+			night += "\tTemperature: " + str(weather['night']['temperature']) + "\n"
+		if weather['night']['precipitate']:
+			night += "\tPrecipitation: " + str(weather['night']['precipitate']) + "\n"
+		if weather['night']['humidity']:
+			night += "\tHumidity: " + str(weather['night']['humidity']) + "\n"
+			
+		speak(intro)
+		speak("Day :" + day)
+		speak("Night :" + night)
 		
 	
 	else:		
