@@ -12,7 +12,7 @@ quit = False
 
 print("initializing")
 listener = sr.Recognizer()
-listener.pause_threshold = 1
+# listener.pause_threshold = 1
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
